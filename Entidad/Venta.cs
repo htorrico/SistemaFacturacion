@@ -16,7 +16,12 @@ namespace Entidad
         public decimal IGV { get; set; }
         public decimal Total { get; set; }
 
-        public int IdCliente { get; set; }
+        //public int IdCliente { get; set; }
+        //public string Cliente { get; set; }
+
+        public Cliente Cliente { get; set; }
+    
+
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
     }

@@ -19,7 +19,7 @@ namespace Data
             SqlParameter[] parameters = null;
             parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@IdCliente", SqlDbType.Int);
-            parameters[0].Value = venta.IdVenta;
+            parameters[0].Value = venta.Cliente.IdCliente;
             parameters[1] = new SqlParameter("@NumeroFactura", SqlDbType.VarChar);
             parameters[1].Value = venta.NumeroFactura;
             parameters[2] = new SqlParameter("@FechaInicio", SqlDbType.DateTime);
@@ -39,12 +39,19 @@ namespace Data
                     Ventas.Add(new Venta
                     {
                         IdVenta = reader["IdVenta"] != null ? Convert.ToInt32(reader["IdVenta"]) : 0,
-                        IdCliente = reader["IdCliente"] != null ? Convert.ToInt32(reader["IdCliente"]) : 0,
                         NumeroFactura = reader["NumeroFactura"] != null ? Convert.ToString(reader["NumeroFactura"]) : "",
                         Fecha = reader["Fecha"] != null ? Convert.ToDateTime(reader["Fecha"]) : DateTime.Now,
                         SubTotal = reader["SubTotal"] != null ? Convert.ToDecimal(reader["SubTotal"]) : 0,
                         IGV = reader["IGV"] != null ? Convert.ToDecimal(reader["IGV"]) :0,
                         Total = reader["Total"] != null ? Convert.ToDecimal(reader["Total"]) : 0,
+                        Cliente= new Cliente
+                        {
+                            IdCliente = reader["IdCliente"] != null ? Convert.ToInt32(reader["IdCliente"]) : 0,
+                            NombresCompletos= reader["Cliente"] != null ? Convert.ToString(reader["Cliente"]) : ""                            
+                        }
+
+                        //IdCliente = reader["IdCliente"] != null ? Convert.ToInt32(reader["IdCliente"]) : 0,
+                        //Cliente = reader["Cliente"] != null ? Convert.ToString(reader["Cliente"]) : "",
 
                     });
                 }

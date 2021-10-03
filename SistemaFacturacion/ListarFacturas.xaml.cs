@@ -39,14 +39,24 @@ namespace SistemaFacturacion
             var ventas = bVenta.GetVentas(
                 new Venta
                 {
-                    IdCliente = 0,
+                    Cliente = new Cliente {  IdCliente=0},
                     FechaInicio = dpFechaInicio.SelectedDate.Value,
                     FechaFin = dpFechaFin.SelectedDate.Value,
                     NumeroFactura = txtNumeroFactura.Text
                 }
 
                 );
-            dgVentas.ItemsSource = ventas;           
+
+            var ventasModelo = from c in ventas
+                               select new
+                               {
+                                   IdVenta = c.IdVenta,
+                                   Cliente = c.Cliente.NombresCompletos,
+                                   FechaFactura = c.Fecha.ToString("dddd, dd MMMM yyyy"),
+                                   NumFactura = c.NumeroFactura,
+                                   Total = c.Total
+                               };
+            dgVentas.ItemsSource = ventasModelo;           
         }
     }
 }
