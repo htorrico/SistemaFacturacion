@@ -12,5 +12,6 @@ namespace Entidad
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public string DNI { get; set; }
+        public string NombresCompletos { get; set; }
     }
 }

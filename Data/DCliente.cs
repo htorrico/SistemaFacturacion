@@ -32,6 +32,8 @@ namespace Data
                         DNI = reader["DNI"] != null ? Convert.ToString(reader["DNI"]) : "",
                         Nombres = reader["Nombres"] != null ? Convert.ToString(reader["Nombres"]) : "",
                         Apellidos = reader["Apellidos"] != null ? Convert.ToString(reader["Apellidos"]) : "",                        
+                        NombresCompletos=string.Concat( reader["Nombres"] != null ? Convert.ToString(reader["Nombres"]) : "" ,
+                                         reader["Apellidos"] != null ? Convert.ToString(reader["Apellidos"]) : "")
                     });
                 }
 
