@@ -12,7 +12,7 @@ namespace Data
     public class DCliente
     {
 
-        public List<Cliente> GetClientes(Cliente Cliente)
+        public List<Cliente> GetClientes()
         {
             List<Cliente> Clientes = new List<Cliente>();
             string commandText = "USP_ListarClientes";

@@ -59,7 +59,10 @@ namespace Data
             using (SqlCommand cmd = new SqlCommand(commandText, conn))
             {
                 cmd.CommandType = commandType;
-                cmd.Parameters.AddRange(parameters);
+                if (parameters!=null)                
+                    cmd.Parameters.AddRange(parameters);
+                
+                
 
                 conn.Open();
                 // When using CommandBehavior.CloseConnection, the connection will be closed when the  
